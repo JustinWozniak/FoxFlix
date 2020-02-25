@@ -21,6 +21,11 @@ code {
   text-align: center;
 }
 
+.actorLargeImages {
+  margin:20px;
+  width: 90%;
+}
+
 .landingBackround {
   background-color: #333333;
 }
@@ -45,6 +50,12 @@ code {
   background-color: black;
   color: white;
   text-align: center;
+}
+
+.largeImages{
+  margin-bottom: 30px;
+  margin-top: 30px;
+  width: 50%;
 }
 
 
@@ -83,6 +94,17 @@ text-align: center;
 
   .rounded {
     border-radius: 29.25rem;
+  }
+
+  .largeImages{
+    margin-bottom: 30px;
+    margin-top: 30px;
+    width: 90%;
+  }
+
+  .actorLargeImages {
+    margin:30px;
+    width: 65%;
   }
 
   .navbar-brand {

@@ -20,23 +20,27 @@ function TrendingMovies() {
   if (error) return `Something went wrong: ${error.message}`
   if (data)
     console.log("")
-    let movieImageUrls = []
-    let trendingMoviesCount = data.results.length
-    for (let i = 0; i < trendingMoviesCount; i++) {
-      movieImageUrls.push(data.results[i].poster_path);
-    }
+  let movieImageUrls = []
+  let trendingMoviesCount = data.results.length
+  for (let i = 0; i < trendingMoviesCount; i++) {
+    movieImageUrls.push(data.results[i].poster_path);
+  }
 
   // The rendered component
   return (
-      <div>
-        <h2 className="headerOne">Trending Movies:</h2>
-        {
-           <Carousel  arrows>
-             {movieImageUrls.map((images, index) => {
-               console.log("")
-                return <img key={index} src={posterPath + images} alt={index} />;
-             })}
-           </Carousel>
-     }</div>
-  )}
+    <div>
+      <h2 className="headerOne">Trending Movies:</h2>
+      {
+        <Carousel arrows slidesPerScroll={5}
+          slidesPerPage={5}
+          infinite
+          arrows>
+          {movieImageUrls.map((images, index) => {
+            console.log("")
+            return <img className="largeImages" key={index} src={posterPath + images} alt={index} />;
+          })}
+        </Carousel>
+      }</div>
+  )
+}
 export default TrendingMovies
