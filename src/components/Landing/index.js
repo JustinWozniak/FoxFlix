@@ -1,5 +1,7 @@
 import React from 'react';
-import Trending from './trending'
+import TrendingMovies from './TrendingMovies'
+import TrendingTvShows from './TrendingTvShows'
+import PopularActors from './PopularActors'
 
 const Landing = () => (
   <div>
@@ -8,7 +10,9 @@ const Landing = () => (
     Welcome to FoxFlix....your home for everything on movies, actors and reviews...
 
     </div>
-    <Trending />
+    <TrendingMovies />
+    <TrendingTvShows />
+    <PopularActors />
   </div>
 );
 
