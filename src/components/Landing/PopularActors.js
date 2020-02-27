@@ -18,8 +18,7 @@ function PopularActors() {
     const { data, error, isLoading } = useAsync({ promiseFn: popularActorsTask })
     if (isLoading) return "Loading..."
     if (error) return `Something went wrong: ${error.message}`
-    if (data)
-        console.log(data)
+    if (data)   {
     let movieImageUrls = []
     let actorNames = []
     let trendingMoviesCount = data.results.length
@@ -27,7 +26,7 @@ function PopularActors() {
         movieImageUrls.push(data.results[i].profile_path);
         actorNames.push(data.results[i].name)
     }
-
+    
     // The rendered component
     return (
         <div>
@@ -43,5 +42,6 @@ function PopularActors() {
                 </Carousel>
             }</div>
     )
+        }
 }
 export default PopularActors

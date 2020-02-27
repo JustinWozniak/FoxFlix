@@ -9,13 +9,19 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
+import 'firebase/auth';
+import 'firebase/database';
+
 
 const Navigation = () => (
 
   
   <div><AuthUserContext.Consumer>
+  
     {authUser =>
-      authUser ? <NavigationNonAuth /> : <NavigationNonAuth />
+    
+      authUser ?  <NavigationNonAuth /> : <NavigationNonAuth />
+  
     }
   </AuthUserContext.Consumer></div>
 );

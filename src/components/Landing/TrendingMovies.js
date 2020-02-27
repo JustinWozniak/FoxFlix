@@ -18,8 +18,7 @@ function TrendingMovies() {
   const { data, error, isLoading } = useAsync({ promiseFn: trendingMoviesTask })
   if (isLoading) return "Loading..."
   if (error) return `Something went wrong: ${error.message}`
-  if (data)
-    console.log("")
+  if (data) {
   let movieImageUrls = []
   let trendingMoviesCount = data.results.length
   for (let i = 0; i < trendingMoviesCount; i++) {
@@ -36,11 +35,11 @@ function TrendingMovies() {
           infinite
           arrows>
           {movieImageUrls.map((images, index) => {
-            console.log("")
             return <img className="largeImages" key={index} src={posterPath + images} alt={index} />;
           })}
         </Carousel>
       }</div>
   )
+    }
 }
 export default TrendingMovies

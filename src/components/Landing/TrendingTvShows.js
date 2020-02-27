@@ -18,8 +18,7 @@ function TrendingTvShows() {
   const { data, error, isLoading } = useAsync({ promiseFn: TrendingTvShowsTask })
   if (isLoading) return "Loading..."
   if (error) return `Sorry, Theres an error on our end;(): ${error.message}`
-  if (data)
-    console.log(data)
+  if (data){
   let nowPlayingMoviesImageUrls = []
   let nowPlayingMoviesCount = data.results.length
   for (let i = 0; i < nowPlayingMoviesCount; i++) {
@@ -37,11 +36,11 @@ function TrendingTvShows() {
           infinite
           arrows>
           {nowPlayingMoviesImageUrls.map((images, index) => {
-            console.log("")
             return <img className="largeImages" key={index} src={posterPath + images} alt={index} />;
           })}
         </Carousel>
       }</div>
   )
+    }
 }
 export default TrendingTvShows

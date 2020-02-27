@@ -21,6 +21,48 @@ code {
   text-align: center;
 }
 
+.icons  {
+  display: block;
+  margin-left: 50%;
+margin-top: 30px;
+  width: 50%;
+}
+
+
+.overView {
+  color: black;
+  
+}
+.actorMediumImages  {
+  width: 100%;
+}
+
+
+.overViewText {
+  color: white;
+  text-align: center;
+  margin:30px;
+
+}
+
+.factsDiv {
+  color: black;
+ background-color: darkgrey;
+
+}
+
+.BrainhubCarousel.movies{
+width:75%;
+float: left;
+border: 3px solid black
+}
+
+.mainMediaImage {
+  margin:30px;
+  width: 20%;
+  float: left;
+}
+
 .actorLargeImages {
   margin:20px;
   width: 90%;
@@ -106,6 +148,8 @@ text-align: center;
     margin:30px;
     width: 65%;
   }
+
+
 
   .navbar-brand {
     display: inline-block;

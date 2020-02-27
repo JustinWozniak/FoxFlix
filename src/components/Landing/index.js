@@ -2,7 +2,7 @@ import React from 'react';
 import TrendingMovies from './TrendingMovies'
 import TrendingTvShows from './TrendingTvShows'
 import PopularActors from './PopularActors'
-
+import Movie from '../Movie'
 const Landing = () => (
   <div>
     <img className="mainImage" src="./images/flickfoxlogo.jpg" alt="Main Logo"></img>
@@ -14,6 +14,7 @@ const Landing = () => (
     <TrendingMovies />
     <TrendingTvShows />
     <PopularActors />
+    <Movie/>
   </div>
 );
 
