@@ -8,7 +8,7 @@ import MaterialIcon, { colorPalette } from 'material-icons-react'
 
 // Then we'll fetch user data from this API
 const popularActorsTask = async () =>
-    await fetch("https://api.themoviedb.org/3/tv/2190?api_key=" + process.env.REACT_APP_API_KEY + "&language=en-US&append_to_response=credits")
+    await fetch("https://api.themoviedb.org/3/tv/2190?api_key=" + process.env.REACT_APP_API_KEY + "&language=en-US&append_to_response=credits,reviews")
         .then(res => (res.ok ? res : Promise.reject(res)))
         .then(res => res.json())
 
@@ -21,6 +21,7 @@ function TvShow() {
     if (error) return `Something went wrong: ${error.message}`
     if (data) {
         // The rendered component
+        console.log(data)
         let actors = []
         let actorsCount = data.credits.cast.length
       

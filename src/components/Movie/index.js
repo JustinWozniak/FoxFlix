@@ -42,9 +42,19 @@ function Movie() {
                 </div>
                 <h1 className="overView">Overview:</h1>
                 <h2 className="overViewText">{data.overview}</h2>
+              
+                <div className="factsDiv">
+                    <h1 className="overView">Facts:</h1>
+                    <h1 className="overView">Status:{data.status}</h1>
+                    <h1 className="overView">Release Date:{data.release_date}</h1>
+                    <h1 className="overView">Revenue:${data.revenue}</h1>
+                    <h1 className="overView">Runtime:{data.runtime}</h1>
+                    <h1 className="overView">Release Date:{data.release_date}</h1>
+                    <h1 className="overView">Budget:${data.budget}</h1>
+                </div>
                 <h1 className="overView">Top Billed Cast:</h1>
                 <Carousel
-                className="movies"
+                className="TvShows"
                     arrows
                     slidesPerScroll={2}
                     slidesPerPage={4}
@@ -57,15 +67,6 @@ function Movie() {
                             <h3 className="whiteText">{actors[index].name}</h3></div>
                     })}
                 </Carousel>
-                <div className="factsDiv">
-                    <h1 className="overView">Facts:</h1>
-                    <h1 className="overView">Status:{data.status}</h1>
-                    <h1 className="overView">Release Date:{data.release_date}</h1>
-                    <h1 className="overView">Revenue:${data.revenue}</h1>
-                    <h1 className="overView">Runtime:{data.runtime}</h1>
-                    <h1 className="overView">Release Date:{data.release_date}</h1>
-                    <h1 className="overView">Budget:${data.budget}</h1>
-                </div>
             </div>
         )
     }
