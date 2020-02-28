@@ -35,7 +35,7 @@ function TrendingMovies() {
           infinite
           arrows>
           {movieImageUrls.map((images, index) => {
-            return <img className="largeImages" key={index} src={posterPath + images} alt={index} />;
+            return <img className="largeImages" key={index} src={posterPath + images} alt="Acotd" />;
           })}
         </Carousel>
       }</div>

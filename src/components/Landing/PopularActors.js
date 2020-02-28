@@ -37,7 +37,7 @@ function PopularActors() {
                     infinite
                     arrows>
                     {movieImageUrls.map((images, index) => {
-                        return <div><img className="actorLargeImages" key={index} src={posterPath + images} alt={index} /> <h3 className="whiteText">{actorNames[index]}</h3></div>
+                        return <div><img className="actorLargeImages" key={index} src={posterPath + images} alt="actor Image" /> <h3 alt="Image" className="whiteText">{actorNames[index]}</h3></div>
                     })}
                 </Carousel>
             }</div>

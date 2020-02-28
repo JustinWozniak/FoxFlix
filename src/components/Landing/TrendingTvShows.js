@@ -36,7 +36,7 @@ function TrendingTvShows() {
           infinite
           arrows>
           {nowPlayingMoviesImageUrls.map((images, index) => {
-            return <img className="largeImages" key={index} src={posterPath + images} alt={index} />;
+            return <img className="largeImages" key={index} src={posterPath + images} alt="Tv" />;
           })}
         </Carousel>
       }</div>
