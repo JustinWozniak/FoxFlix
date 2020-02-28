@@ -23,7 +23,7 @@ function TvShow() {
         // The rendered component
         let actors = []
         let actorsCount = data.credits.cast.length
-        console.log(actorsCount)
+      
         let seasons = []
         let seasonsCount = data.seasons.length
         for (let i = 0; i < actorsCount; i++) {
@@ -34,7 +34,7 @@ function TvShow() {
         for (let j = 0; j < seasonsCount; j++) {
             seasons.push(data.seasons[j]);
         }
-        console.log(seasons)
+      
 
         return (
             <div style={{ backgroundImage: data.backdrop_path }}>

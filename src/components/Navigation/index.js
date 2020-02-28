@@ -51,7 +51,7 @@ const NavigationAuth = () => (
 const NavigationNonAuth = () => (
 <nav justify class="navbar navbar-white bg-primary">
     <Navbar class="navbar navbar-dark bg-dark" >
-      <Navbar.Brand href={ROUTES.LANDING}>Fox Flix</Navbar.Brand>
+    <img className="mainImage" src="./images/flickfoxlogo.jpg" alt="Main Logo"></img>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">

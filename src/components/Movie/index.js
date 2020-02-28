@@ -21,15 +21,14 @@ function Movie() {
     if (isLoading) return "Loading..."
     if (error) return `Something went wrong: ${error.message}`
     if (data) {
-        console.log(data)
         // The rendered component
         let actors = []
         let actorsCount = data.credits.cast.length
-        console.log(actorsCount)
+      
         for (let i = 0; i < actorsCount; i++) {
             actors.push(data.credits.cast[i]);
         }
-        console.log(actors)
+
 
         return (
             <div style={{ backgroundImage: data.backdrop_path }}>
