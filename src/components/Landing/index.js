@@ -15,7 +15,7 @@ const Landing = () => (
     <TrendingMovies />
     <TrendingTvShows />
     <PopularActors />
-    <Actor />
+
   </div>
 );
 

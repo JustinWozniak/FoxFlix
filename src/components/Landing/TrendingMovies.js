@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useAsync } from 'react-async';
 import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
@@ -14,32 +14,50 @@ const trendingMoviesTask = async () =>
 
 
 function TrendingMovies() {
+  let movieNumber = ""
+  const [link, setLink] = useState("https://api.themoviedb.org/3/movie/")
   const posterPath = "https://image.tmdb.org/t/p/w500/"
   const { data, error, isLoading } = useAsync({ promiseFn: trendingMoviesTask })
   if (isLoading) return "Loading..."
   if (error) return `Something went wrong: ${error.message}`
   if (data) {
-  let movieImageUrls = []
-  let trendingMoviesCount = data.results.length
-  for (let i = 0; i < trendingMoviesCount; i++) {
-    movieImageUrls.push(data.results[i].poster_path);
-  }
+    movieNumber = data.results
+    let movieImageUrls = []
+    let movieNumbers = []
+    let trendingMoviesCount = data.results.length
+    for (let i = 0; i < trendingMoviesCount; i++) {
+      movieImageUrls.push(data.results[i].poster_path);
+      movieNumbers.push(data.results[i].id)
 
-  // The rendered component
-  return (
-    <div>
-      <h2 className="headerOne">Trending Movies:</h2>
-      {
-        <Carousel arrows slidesPerScroll={5}
-          slidesPerPage={5}
-          infinite
-          arrows>
-          {movieImageUrls.map((images, index) => {
-            return <img className="largeImages" key={index} src={posterPath + images} alt="Acotd" />;
-          })}
-        </Carousel>
-      }</div>
-  )
     }
+    function changeTheLink(e) {
+     
+        let movieIdToUse = movieNumbers[e]
+        setLink(prevLink => prevLink + movieIdToUse + "?api_key=" + process.env.REACT_APP_API_KEY + "&language=en-US&append_to_response=credits")
+
+      
+      console.log(link)
+    }
+
+
+    // The rendered component
+    return (
+      <div>
+        <h2 className="headerOne">Trending Movies:</h2>
+        {
+          <Carousel arrows slidesPerScroll={5}
+            slidesPerPage={5}
+            infinite
+            arrows>
+            {movieImageUrls.map((images, index) => {
+              return (
+                <div>
+                  <img onClick={(e) => changeTheLink(index)} className="largeImages" key={index} src={posterPath + images} alt="Acotd" />
+                </div>)
+            })}
+          </Carousel>
+        }</div>
+    )
+  }
 }
 export default TrendingMovies

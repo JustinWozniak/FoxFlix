@@ -9,7 +9,7 @@ import MaterialIcon, { colorPalette } from 'material-icons-react'
 // Then we'll fetch user data from this API
 const popularActorsTask = async () =>
 
-    await fetch("https://api.themoviedb.org/3/person/85?api_key=" + process.env.REACT_APP_API_KEY + "&language=en-US&append_to_response=credits")
+    await fetch("https://api.themoviedb.org/3/person/31?api_key=" + process.env.REACT_APP_API_KEY + "&language=en-US&append_to_response=credits")
         .then(res => (res.ok ? res : Promise.reject(res)))
         .then(res => res.json())
 
