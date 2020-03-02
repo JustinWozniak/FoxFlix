@@ -4,7 +4,6 @@ import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
 
 
-
 // Then we'll fetch user data from this API
 const trendingMoviesTask = async () =>
   await fetch("https://api.themoviedb.org/3/trending/all/day?api_key=" + process.env.REACT_APP_API_KEY)
@@ -14,14 +13,14 @@ const trendingMoviesTask = async () =>
 
 
 function TrendingMovies() {
-  let movieNumber = ""
+ 
   const [link, setLink] = useState("https://api.themoviedb.org/3/movie/")
   const posterPath = "https://image.tmdb.org/t/p/w500/"
   const { data, error, isLoading } = useAsync({ promiseFn: trendingMoviesTask })
   if (isLoading) return "Loading..."
   if (error) return `Something went wrong: ${error.message}`
   if (data) {
-    movieNumber = data.results
+    let movieNumber = data.results
     let movieImageUrls = []
     let movieNumbers = []
     let trendingMoviesCount = data.results.length
