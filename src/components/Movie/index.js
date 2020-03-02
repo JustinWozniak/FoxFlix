@@ -15,7 +15,8 @@ const popularActorsTask = async () =>
 
 
 
-function Movie() {
+function Movie(props) {
+    console.log(props)
     const posterPath = "https://image.tmdb.org/t/p/w500/"
     const { data, error, isLoading } = useAsync({ promiseFn: popularActorsTask })
     if (isLoading) return "Loading..."
