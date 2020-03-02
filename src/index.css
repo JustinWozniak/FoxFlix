@@ -76,6 +76,12 @@ float: left;
   float: left;
 }
 
+.form-inline .form-control {
+  display: inline-block;
+  width: 100%;
+  vertical-align: middle;
+}
+
 .actorLargeImages {
   margin:20px;
   width: 90%;
