@@ -34,14 +34,12 @@ function Actor() {
        
         // The rendered component
         let actor = data
-        console.log(actor)
         let actorsCredits = []
         let actorsCreditCount = data.credits.cast.length
-        console.log(actorsCreditCount)
         for (let i = 0; i < actorsCreditCount; i++) {
             actorsCredits.push(data.credits.cast[i]);
         }
-        console.log(actorsCredits)
+
 
 
         return (

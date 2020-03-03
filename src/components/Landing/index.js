@@ -8,8 +8,8 @@ import landingContext from "./landingContext"
 
 function Landing() {
   let [typeOfComponentToShow, setTypeOfComponentToShow] = useState("https://api.themoviedb.org/3/")
-  let n = typeOfComponentToShow.search("movdsie/");
-  console.log(typeOfComponentToShow)
+  let n = typeOfComponentToShow.search("movie/");
+  console.log(n)
 
   return(
   <div>
@@ -19,11 +19,12 @@ function Landing() {
   
     </div>   
     <landingContext.Provider value={typeOfComponentToShow}>
-    {n > 0 ? <Movie props={typeOfComponentToShow}/> :  
+    {n > 28 ? <Movie sentLink={typeOfComponentToShow}/> :  
     <div> 
-      <TrendingMovies props={typeOfComponentToShow}/>
+      <TrendingMovies type={typeOfComponentToShow} function={setTypeOfComponentToShow}/>
       <TrendingTvShows />
       <PopularActors /> 
+      <Movie />
       </div>}
     
       </landingContext.Provider>

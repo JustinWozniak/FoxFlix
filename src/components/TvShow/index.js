@@ -21,7 +21,6 @@ function TvShow() {
     if (error) return `Something went wrong: ${error.message}`
     if (data) {
         // The rendered component
-        console.log(data)
         let actors = []
         let actorsCount = data.credits.cast.length
       

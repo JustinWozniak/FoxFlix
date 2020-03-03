@@ -4,8 +4,6 @@ import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
 import MaterialIcon, { colorPalette } from 'material-icons-react'
 
-
-
 // Then we'll fetch user data from this API
 const popularActorsTask = async () =>
 
@@ -16,9 +14,22 @@ const popularActorsTask = async () =>
 
 
 function Movie(props) {
-    console.log(props)
+    let recievedLink = props.sentLink
+    console.log(props.sentLink + "RECIEVED")
+
+    if(props.sentLink != null)  {
+        console.log("NOTNULL")
+        fetch(props.sentLink)
+      .then(response => response.json())
+      .then(recievedData => console.log(recievedData));
+
+      
+  
+    }
+    
+
     const posterPath = "https://image.tmdb.org/t/p/w500/"
-    const { data, error, isLoading } = useAsync({ promiseFn: popularActorsTask })
+    const { data, error, isLoading } = useAsync({ promiseFn: popularActorsTask }, recievedLink)
     if (isLoading) return "Loading..."
     if (error) return `Something went wrong: ${error.message}`
     if (data) {
