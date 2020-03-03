@@ -21,7 +21,7 @@ function Landing() {
     <landingContext.Provider value={typeOfComponentToShow}>
     {n > 0 ? <Movie props={typeOfComponentToShow}/> :  
     <div> 
-      <TrendingMovies />
+      <TrendingMovies props={typeOfComponentToShow}/>
       <TrendingTvShows />
       <PopularActors /> 
       </div>}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { withAuthorization } from '../Session';
+import { withAuthorization } from '../../SignupLogin/Session';
 import Landing from '../Landing'
 const HomePage = () => (
   <div>

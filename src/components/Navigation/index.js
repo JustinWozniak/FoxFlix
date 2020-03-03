@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AuthUserContext } from '../Session';
-import SignOutButton from '../SignOut';
+import { AuthUserContext } from '../../SignupLogin/Session';
+import SignOutButton from '../../SignupLogin/SignOut';
 import * as ROUTES from '../../constants/routes';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
