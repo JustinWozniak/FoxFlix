@@ -37,7 +37,8 @@ function TrendingMovies(props) {
       contextLink = contextLink + componentType + movieIdToUse + "?api_key=" + process.env.REACT_APP_API_KEY + "&language=en-US&append_to_response=credits"
       
       setLink(componentType)
-      props.function(contextLink)
+      props.function(movieIdToUse)
+     
     }
 
 

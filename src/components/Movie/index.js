@@ -1,90 +1,82 @@
-import React from 'react'
-import { useAsync } from 'react-async';
-import Carousel from '@brainhubeu/react-carousel';
-import '@brainhubeu/react-carousel/lib/style.css';
+import React, { Component } from 'react';
+import axios from 'axios';
 import MaterialIcon, { colorPalette } from 'material-icons-react'
 
-// Then we'll fetch user data from this API
-const popularActorsTask = async () =>
+let movieKey = 6666
+const posterPath = "https://image.tmdb.org/t/p/w500/"
 
-    await fetch("https://api.themoviedb.org/3/movie/9037?api_key=" + process.env.REACT_APP_API_KEY + "&language=en-US&append_to_response=credits")
-        .then(res => (res.ok ? res : Promise.reject(res)))
-        .then(res => res.json())
+class Movie extends Component {
+  state = {
+    number: [0],
+    movieNumber: [],
+    original_title: [],
+    poster_path: [],
+    tagline: [],
+    overview: [],
+    status: [],
+    release_date: [],
+    revenue: [],
+    runtime: [],
+    budget: []
+  }
+  componentDidMount() {
+    movieKey = this.props.value
+    const API_URL = "https://api.themoviedb.org/3/movie/" + movieKey + "?api_key=" + process.env.REACT_APP_API_KEY + "&language=en-US&append_to_response=credits"
+
+    const url = `${API_URL}`;
+    axios.get(url).then(response => response.data)
+      .then((data) => {
+        this.setState({
+          users: data,
+          original_title: data.original_title,
+          poster_path: data.poster_path,
+          tagline: data.tagline,
+          overview: data.overview,
+          status: data.status,
+          release_date: data.release_date,
+          revenue: data.revenue,
+          runtime: data.runtime,
+          budget: data.budget
+        })
+
+        let movieObject = Object.values(this.state.users);
+        this.setState({ info: movieObject })
+        this.setState({ movieNumber: this.props.value })
+        movieKey = this.props.value
+      })
+  }
 
 
-
-function Movie(props) {
-    let recievedLink = props.sentLink
-    console.log(props.sentLink + "RECIEVED")
-
-    if(props.sentLink != null)  {
-        console.log("NOTNULL")
-        fetch(props.sentLink)
-      .then(response => response.json())
-      .then(recievedData => console.log(recievedData));
-
-      
-  
-    }
-    
-
-    const posterPath = "https://image.tmdb.org/t/p/w500/"
-    const { data, error, isLoading } = useAsync({ promiseFn: popularActorsTask }, recievedLink)
-    if (isLoading) return "Loading..."
-    if (error) return `Something went wrong: ${error.message}`
-    if (data) {
-        // The rendered component
-        let actors = []
-        let actorsCount = data.credits.cast.length
-      
-        for (let i = 0; i < actorsCount; i++) {
-            actors.push(data.credits.cast[i]);
-        }
-
-
-        return (
-            <div style={{ backgroundImage: data.backdrop_path }}>
-                <h2 className="headerOne">{data.original_title}</h2>
-                <img className="mainMediaImage" key={data.original_title} src={posterPath + data.poster_path} alt={data.original_title} />
-                <h3 className="overView">{data.tagline}</h3>
-                <div className="icons">
-                    <MaterialIcon icon="favorite" size={75} color={colorPalette.pink._800} />
-                    <MaterialIcon icon="bookmark" size={75} color={colorPalette.red._800} />
-                    <MaterialIcon icon="star" size={75} color={colorPalette.yellow._800} />
-                </div>
-                <h1 className="overView">Overview:</h1>
-                <h2 className="overViewText">{data.overview}</h2>
-              
-                <div className="factsDiv">
-                    <h1 className="overView">Facts:</h1>
-                    <h1 className="overView">Status:{data.status}</h1>
-                    <h1 className="overView">Release Date:{data.release_date}</h1>
-                    <h1 className="overView">Revenue:${data.revenue}</h1>
-                    <h1 className="overView">Runtime:{data.runtime}</h1>
-                    <h1 className="overView">Release Date:{data.release_date}</h1>
-                    <h1 className="overView">Budget:${data.budget}</h1>
-                </div>
-                <h1 className="overView">Top Billed Cast:</h1>
-                <Carousel
-                className="TvShows"
-                    arrows
-                    slidesPerScroll={2}
-                    slidesPerPage={4}
-                    infinite
-                    arrows>
-                    {actors.map((images, index) => {
-                        return <div><img className="actorMediumImages" key={index} src={posterPath + actors[index].profile_path} alt="Actor Image" />
-                            <hr />
-                            <h3 className="whiteText">{actors[index].character}</h3>
-                            <h3 className="whiteText">{actors[index].name}</h3></div>
-                    })}
-                </Carousel>
+  render() {
+    movieKey = this.state.movieNumber
+    return (
+      <div>
+        {this.state.number.map((user) => (
+          <div>
+            <h2 className="headerOne">{this.state.original_title}</h2>
+            <img className="mainMediaImage" key={this.state.original_title} src={posterPath + this.state.poster_path} alt={this.state.original_title} />
+            <h3 className="overView">{this.state.tagline}</h3>
+            <div className="icons">
+              <MaterialIcon icon="favorite" size={75} color={colorPalette.pink._800} />
+              <MaterialIcon icon="bookmark" size={75} color={colorPalette.red._800} />
+              <MaterialIcon icon="star" size={75} color={colorPalette.yellow._800} />
             </div>
-        )
-    }
-
-
+            <h1 className="overView">Overview:</h1>
+            <h2 className="overViewText">{this.state.overview}</h2>
+            <div className="factsDiv">
+              <h1 className="overView">Facts:</h1>
+              <h1 className="overView">Status:{this.state.status}</h1>
+              <h1 className="overView">Release Date:{this.state.release_date}</h1>
+              <h1 className="overView">Revenue:${this.state.revenue}</h1>
+              <h1 className="overView">Runtime:{this.state.runtime}</h1>
+              <h1 className="overView">Release Date:{this.state.release_date}</h1>
+              <h1 className="overView">Budget:${this.state.budget}</h1>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
 }
-
 export default Movie
