@@ -54,8 +54,8 @@ function TrendingMovies(props) {
               arrows>
               {movieImageUrls.map((images, index) => {
                 return (
-                  <div>
-                    <img onClick={(imageNumber) => changeTheLink(index, passedLink)} className="largeImages" key={index} src={posterPath + images} alt="Acotd" />
+                  <div key={"dxiv"}>
+                    <img key={"d"} onClick={(imageNumber) => changeTheLink(index, passedLink)} className="largeImages" key={"fd"} src={posterPath + images} alt="Acotd" />
                   </div>)
               })}
             </Carousel>

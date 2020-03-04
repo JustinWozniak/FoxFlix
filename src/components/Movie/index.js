@@ -53,24 +53,23 @@ class Movie extends Component {
       <div>
         {this.state.number.map((user) => (
           <div>
-            <h2 className="headerOne">{this.state.original_title}</h2>
+            <h2 className="headerOne" key={this.state.original_title}>{this.state.original_title}</h2>
             <img className="mainMediaImage" key={this.state.original_title} src={posterPath + this.state.poster_path} alt={this.state.original_title} />
-            <h3 className="overView">{this.state.tagline}</h3>
+            <h3 className="overView" key={this.state.tagline}>{this.state.tagline}</h3>
             <div className="icons">
               <MaterialIcon icon="favorite" size={75} color={colorPalette.pink._800} />
               <MaterialIcon icon="bookmark" size={75} color={colorPalette.red._800} />
               <MaterialIcon icon="star" size={75} color={colorPalette.yellow._800} />
             </div>
-            <h1 className="overView">Overview:</h1>
-            <h2 className="overViewText">{this.state.overview}</h2>
-            <div className="factsDiv">
-              <h1 className="overView">Facts:</h1>
-              <h1 className="overView">Status:{this.state.status}</h1>
-              <h1 className="overView">Release Date:{this.state.release_date}</h1>
-              <h1 className="overView">Revenue:${this.state.revenue}</h1>
-              <h1 className="overView">Runtime:{this.state.runtime}</h1>
-              <h1 className="overView">Release Date:{this.state.release_date}</h1>
-              <h1 className="overView">Budget:${this.state.budget}</h1>
+            <h1 className="overView" key={this.state.number}>Overview:</h1>
+            <h2 className="overViewText" key={this.state.overview}>{this.state.overview}</h2>
+            <div className="factsDiv" key={this.state.original_title}>
+              <h1 className="overView" key={this.state.original_title}>Facts:</h1>
+              <h1 className="overView" key={this.state.status}>Status:{this.state.status}</h1>
+              <h1 className="overView" key={this.state.release_date}>Release Date:{this.state.release_date}</h1>
+              <h1 className="overView" key={this.state.revenue}>Revenue:${this.state.revenue}</h1>
+              <h1 className="overView" key={this.state.runtime}>Runtime:{this.state.runtime}</h1>
+              <h1 className="overView" key={this.state.budget}>Budget:${this.state.budget}</h1>
             </div>
           </div>
         ))}

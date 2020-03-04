@@ -49,7 +49,7 @@ const NavigationAuth = () => (
 );
 
 const NavigationNonAuth = () => (
-<nav justify class="navbar navbar-white bg-primary">
+<nav justify className="navbar navbar-white bg-primary">
     <Navbar class="navbar navbar-dark bg-dark" >
     <img className="mainImage" src="./images/flickfoxlogo.jpg" alt="Main Logo"></img>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
