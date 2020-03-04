@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import MaterialIcon, { colorPalette } from 'material-icons-react'
+import Carousel from '@brainhubeu/react-carousel';
 
 let movieKey = 6666
 const posterPath = "https://image.tmdb.org/t/p/w500/"
@@ -17,7 +18,11 @@ class Movie extends Component {
     release_date: [],
     revenue: [],
     runtime: [],
-    budget: []
+    budget: [],
+
+    //actors in the movie
+    cast:[],
+    actorsObject:[]
   }
   componentDidMount() {
     movieKey = this.props.value
@@ -36,12 +41,16 @@ class Movie extends Component {
           release_date: data.release_date,
           revenue: data.revenue,
           runtime: data.runtime,
-          budget: data.budget
-        })
+          budget: data.budget,
 
+          //actors
+          credits:data.credits
+        })
         let movieObject = Object.values(this.state.users);
+        let actorsObject = Object.values(this.state.credits.cast);
         this.setState({ info: movieObject })
         this.setState({ movieNumber: this.props.value })
+        this.setState({ actorsObject: actorsObject })
         movieKey = this.props.value
       })
   }
@@ -71,10 +80,26 @@ class Movie extends Component {
               <h1 className="overView" key={this.state.runtime}>Runtime:{this.state.runtime}</h1>
               <h1 className="overView" key={this.state.budget}>Budget:${this.state.budget}</h1>
             </div>
-          </div>
+          
+          <h1 className="overView">Top Billed Cast:</h1>
+                <Carousel
+                className="TvShows"
+                    arrows
+                    slidesPerScroll={2}
+                    slidesPerPage={4}
+                    infinite
+                    arrows>
+                    {this.state.actorsObject.map((index) => {
+                        return <div><img className="actorMediumImages" key={index} src={posterPath + index.profile_path} alt="Actor Image" />
+                            <hr />
+                            <h3 className="whiteText">{index.character}</h3>
+                            <h3 className="whiteText">{index.name}</h3></div>
+                    })}
+                </Carousel>
+                </div>
         ))}
       </div>
-    );
+    )
   }
 
 }
