@@ -13,6 +13,7 @@ const trendingMoviesTask = async () =>
 
 
 function TrendingMovies(props) {
+  console.log(props)
   const [componentType, setLink] = useState("movie/")
   const posterPath = "https://image.tmdb.org/t/p/w500/"
   const { data, error, isLoading } = useAsync({ promiseFn: trendingMoviesTask })
@@ -35,9 +36,10 @@ function TrendingMovies(props) {
     function changeTheLink(index, contextLink) {
       let movieIdToUse = movieNumbers[index]
       contextLink = contextLink + componentType + movieIdToUse + "?api_key=" + process.env.REACT_APP_API_KEY + "&language=en-US&append_to_response=credits"
-      
+      console.log(componentType)
       setLink(componentType)
       props.function(movieIdToUse)
+      props.componentTypeId(componentType)
      
     }
 

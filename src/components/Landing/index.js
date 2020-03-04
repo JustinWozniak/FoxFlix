@@ -4,10 +4,13 @@ import TrendingTvShows from '../TrendingTvShows'
 import PopularActors from '../PopularActors'
 import Movie from '../Movie'
 import Actor from '../Actor'
+import TvShow from '../TvShow';
 
 
 function Landing() {
   let [movieId, setMovieId] = useState("")
+  let [tvShowId, setTvShowId] = useState("")
+  let [componentType, setComponentType] = useState("")
   console.log(movieId)
   return(
   <div>
@@ -16,10 +19,11 @@ function Landing() {
        TV and celebrity content. Find ratings and reviews for the newest movie and TV shows....
     </div>   
 
-    {movieId > 28 ? <Movie value={movieId}/> :  
+    {componentType === "movie/" ? <Movie value={movieId}/> : 
+    componentType === "tv/" ? <TvShow  value={tvShowId}/> : 
     <div> 
-      <TrendingMovies type={movieId} function={setMovieId}/>
-      <TrendingTvShows />
+      <TrendingMovies type={movieId} function={setMovieId} componentTypeId={setComponentType}/>
+      <TrendingTvShows type={tvShowId} function={setTvShowId} componentTypeId={setComponentType}/>
       <PopularActors /> 
       </div>}
   </div>
