@@ -20,19 +20,16 @@ class TvShow extends Component {
     last_episode_to_air: [],
     next_episode_to_air: [],
 
-    //actors in the movie
-    cast:[],
-    actorsObject:[]
+    //actors in the show
+    cast: [],
+    actorsObject: []
   }
   componentDidMount() {
     tvShowLink = this.props.value
-    console.log(tvShowLink + "KEY")
     const API_URL = tvShowLink
-    console.log(API_URL + "URL")
     const url = `${API_URL}`;
     axios.get(url).then(response => response.data)
       .then((data) => {
-        console.log(data)
         this.setState({
           users: data,
           original_title: data.original_name,
@@ -46,7 +43,7 @@ class TvShow extends Component {
           next_episode_to_air: data.next_episode_to_air.air_date,
 
           //actors
-          credits:data.credits.cast
+          credits: data.credits.cast
         })
         let tvShowObject = Object.values(this.state.users);
         let actorsObject = Object.values(this.state.credits);
@@ -82,23 +79,23 @@ class TvShow extends Component {
               <h1 className="overView" key={this.state.last_episode_to_air}>Last Episode to Air: {this.state.last_episode_to_air}</h1>
               <h1 className="overView" key={this.state.next_episode_to_air}>Next Episode to Air: {this.state.next_episode_to_air}</h1>
             </div>
-          
-          <h1 className="overView">Top Billed Cast:</h1>
-                <Carousel
-                className="TvShows"
-                    arrows
-                    slidesPerScroll={2}
-                    slidesPerPage={4}
-                    infinite
-                    arrows>
-                    {this.state.actorsObject.map((index) => {
-                        return <div><img className="actorMediumImages" key={index} src={posterPath + index.profile_path} alt="Actor Image" />
-                            <hr />
-                            <h3 className="whiteText">{index.character}</h3>
-                            <h3 className="whiteText">{index.name}</h3></div>
-                    })}
-                </Carousel>
-                </div>
+
+            <h1 className="overView">Top Billed Cast:</h1>
+            <Carousel
+              className="TvShows"
+              arrows
+              slidesPerScroll={2}
+              slidesPerPage={4}
+              infinite
+              arrows>
+              {this.state.actorsObject.map((index) => {
+                return <div><img className="actorMediumImages" key={index} src={posterPath + index.profile_path} alt="Actor Image" />
+                  <hr />
+                  <h3 className="whiteText">{index.character}</h3>
+                  <h3 className="whiteText">{index.name}</h3></div>
+              })}
+            </Carousel>
+          </div>
         ))}
       </div>
     )

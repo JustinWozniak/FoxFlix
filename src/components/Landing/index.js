@@ -12,7 +12,6 @@ function Landing() {
   let [tvShowId, setTvShowId] = useState("")
   let [componentType, setComponentType] = useState("")
   let [tvComponentType, setTvComponentType] = useState("")
-  console.log(tvComponentType + "YESSSS")
   return(
   <div>
     <div className="introDiv">

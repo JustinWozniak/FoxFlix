@@ -14,7 +14,6 @@ const trendingTvTask = async () =>
 
 
 function TrendingTvShows(props) {
-  console.log(props)
   const [componentType, setComponentType] = useState("tv/")
   const posterPath = "https://image.tmdb.org/t/p/w500/"
   const { data, error, isLoading } = useAsync({ promiseFn: trendingTvTask })
@@ -27,19 +26,15 @@ function TrendingTvShows(props) {
     for (let i = 0; i < trendingTvShowsCount; i++) {
       tvShowImageUrls.push(data.results[i].poster_path);
       tvShowNumbers.push(data.results[i].id)
-  
     }
-   
+
 
     function changeTheLink(index, contextLink) {
       let tvShowIdToUse = tvShowNumbers[index]
-      console.log(tvShowIdToUse)
       contextLink = API_LINK + componentType + tvShowIdToUse + "?api_key=" + process.env.REACT_APP_API_KEY + "&language=en-US&append_to_response=credits"
-      console.log(contextLink)
       setComponentType(componentType)
       props.function(contextLink)
       props.componentTypeId(componentType)
-     
     }
 
 
@@ -63,8 +58,6 @@ function TrendingTvShows(props) {
           }</div>
       )}
     </landingContext.Consumer>
-
-
     )
   }
 }
