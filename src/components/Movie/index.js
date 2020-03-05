@@ -22,8 +22,12 @@ class Movie extends Component {
 
     //actors in the movie
     cast:[],
-    actorsObject:[]
+    actorsObject:[],
+    actorsCount:[]
   }
+
+
+  
   componentDidMount() {
     movieKey = this.props.value
     const API_URL = "https://api.themoviedb.org/3/movie/" + movieKey + "?api_key=" + process.env.REACT_APP_API_KEY + "&language=en-US&append_to_response=credits"
@@ -31,6 +35,7 @@ class Movie extends Component {
     const url = `${API_URL}`;
     axios.get(url).then(response => response.data)
       .then((data) => {
+        console.log(data)
         this.setState({
           users: data,
           original_title: data.original_title,
@@ -44,8 +49,12 @@ class Movie extends Component {
           budget: data.budget,
 
           //actors
-          credits:data.credits
+          credits:data.credits,
+          linkType:"person/"
+         
         })
+      
+
         let movieObject = Object.values(this.state.users);
         let actorsObject = Object.values(this.state.credits.cast);
         this.setState({ info: movieObject })
@@ -53,12 +62,26 @@ class Movie extends Component {
         this.setState({ actorsObject: actorsObject })
         movieKey = this.props.value
       })
+
+
+   
+     
   }
 
 
   render() {
     movieKey = this.state.movieNumber
+
+   
+    function changeTheLink(clickedActorinfo) {
+     
+      let actorsIdNumber = clickedActorinfo.id
+      console.log(actorsIdNumber)
+      
+    }
+
     return (
+      
       <div>
         {this.state.number.map((user) => (
           <div>
@@ -90,7 +113,7 @@ class Movie extends Component {
                     infinite
                     arrows>
                     {this.state.actorsObject.map((index) => {
-                        return <div><img className="actorMediumImages" key={index} src={posterPath + index.profile_path} alt="Actor Image" />
+                        return <div><img className="actorMediumImages" onClick={() => changeTheLink(index)} key={index} src={posterPath + index.profile_path} alt="Actor Image" />
                             <hr />
                             <h3 className="whiteText">{index.character}</h3>
                             <h3 className="whiteText">{index.name}</h3></div>

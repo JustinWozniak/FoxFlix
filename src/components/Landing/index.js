@@ -12,6 +12,7 @@ function Landing() {
   let [tvShowId, setTvShowId] = useState("")
   let [componentType, setComponentType] = useState("")
   let [tvComponentType, setTvComponentType] = useState("")
+  let [actorsId, setActorsId] = useState("")
   return(
   <div>
     <div className="introDiv">
@@ -21,10 +22,12 @@ function Landing() {
 
     {componentType === "movie/" ? <Movie value={movieId}/> : 
     tvComponentType === "tv/" ? <TvShow  value={tvShowId}/> : 
+    actorsId != "" ? <Actor /> :
     <div> 
-      <TrendingMovies type={movieId} function={setMovieId} componentTypeId={setComponentType}/>
+      <TrendingMovies type={movieId} function={setMovieId} componentTypeId={setComponentType} actorsId={actorsId} setActorsId={setActorsId}/>
       <TrendingTvShows type={tvShowId} function={setTvShowId} componentTypeId={setTvComponentType}/>
       <PopularActors /> 
+     
       </div>}
   </div>
   )

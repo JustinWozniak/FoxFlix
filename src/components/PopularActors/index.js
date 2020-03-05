@@ -18,30 +18,34 @@ function PopularActors() {
     const { data, error, isLoading } = useAsync({ promiseFn: popularActorsTask })
     if (isLoading) return "Loading..."
     if (error) return `Something went wrong: ${error.message}`
-    if (data)   {
-    let movieImageUrls = []
-    let actorNames = []
-    let trendingMoviesCount = data.results.length
-    for (let i = 0; i < trendingMoviesCount; i++) {
-        movieImageUrls.push(data.results[i].profile_path);
-        actorNames.push(data.results[i].name)
-    }
-    
-    // The rendered component
-    return (
-        <div>
-            <h2 className="headerOne">Popular Actors:</h2>
-            {
-                <Carousel arrows slidesPerScroll={3}
-                    slidesPerPage={3}
-                    infinite
-                    arrows>
-                    {movieImageUrls.map((images, index) => {
-                        return <div key={"x"}><img className="actorLargeImages" key={index} src={posterPath + images} alt="actor Image" /> <h3 key={""} alt="Image" className="whiteText">{actorNames[index]}</h3></div>
-                    })}
-                </Carousel>
-            }</div>
-    )
+    if (data) {
+        let movieImageUrls = []
+        let actorNames = []
+        let trendingMoviesCount = data.results.length
+        for (let i = 0; i < trendingMoviesCount; i++) {
+            movieImageUrls.push(data.results[i].profile_path);
+            actorNames.push(data.results[i].name)
         }
+
+        function loadThisActor(info) {
+            console.log(info)
+        }
+
+        // The rendered component
+        return (
+            <div>
+                <h2 className="headerOne">Popular Actors:</h2>
+                {
+                    <Carousel arrows slidesPerScroll={3}
+                        slidesPerPage={3}
+                        infinite
+                        arrows>
+                        {movieImageUrls.map((images, index) => {
+                            return <div key={"x"}><img className="actorLargeImages" onClick={() => loadThisActor(index)} key={index} src={posterPath + images} alt="actor Image" /> <h3 key={""} alt="Image" className="whiteText">{actorNames[index]}</h3></div>
+                        })}
+                    </Carousel>
+                }</div>
+        )
+    }
 }
 export default PopularActors
