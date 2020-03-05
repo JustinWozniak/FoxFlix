@@ -51,18 +51,19 @@ const NavigationAuth = () => (
 const NavigationNonAuth = () => (
 <nav justify className="navbar navbar-white bg-primary">
     <Navbar class="navbar navbar-dark bg-dark" >
-    <img className="mainImage" src="./images/flickfoxlogo.jpg" alt="Main Logo"></img>
+    <img  className="mainImage" src="./images/flickfoxlogo.jpg" alt="Main Logo"></img>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           {/* <Nav.Link href={ROUTES.LANDING}>Home</Nav.Link> */}
           <Nav.Link href={ROUTES.SIGN_IN}>Log In</Nav.Link>
           <NavDropdown title="Features" id="basic-nav-dropdown">
-            <NavDropdown.Item href={ROUTES.ACCOUNT}>My Account</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+            <NavDropdown.Item href={ROUTES.ACCOUNT}>Drunk Fox Rantz</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2">Top Rated Movies</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.3">Top Rated Tv Shows</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.3">Popular Actors</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+            <NavDropdown.Item href={ROUTES.ACCOUNT}>My Account</NavDropdown.Item>
           </NavDropdown>
         </Nav>
         <Form inline>
