@@ -7,7 +7,7 @@ import landingContext from "../Landing/landingContext"
 const API_LINK = "https://api.themoviedb.org/3/"
 // Then we'll fetch user data from this API
 const trendingTvTask = async () =>
-  await fetch("https://api.themoviedb.org/3/trending/tv/day?api_key=" + process.env.REACT_APP_API_KEY)
+  await fetch(API_LINK + "trending/tv/day?api_key=" + process.env.REACT_APP_API_KEY)
     .then(res => (res.ok ? res : Promise.reject(res)))
     .then(res => res.json())
 
