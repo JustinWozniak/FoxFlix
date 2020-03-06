@@ -15,13 +15,13 @@ import 'firebase/database';
 
 const Navigation = () => (
 
-  
+
   <div><AuthUserContext.Consumer>
-  
+
     {authUser =>
-    
-      authUser ?  <NavigationNonAuth /> : <NavigationNonAuth />
-  
+
+      authUser ? <NavigationNonAuth /> : <NavigationNonAuth />
+
     }
   </AuthUserContext.Consumer></div>
 );
@@ -49,22 +49,25 @@ const NavigationAuth = () => (
 );
 
 const NavigationNonAuth = () => (
-<nav justify className="navbar navbar-white bg-primary">
+  <nav justify className="navbar navbar-white bg-primary">
+  
     <Navbar class="navbar navbar-dark bg-dark" >
-    <img  className="mainImage" src="./images/flickfoxlogo.jpg" alt="Main Logo"></img>
+    
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      
       <Navbar.Collapse id="basic-navbar-nav">
+      
         <Nav className="mr-auto">
-          {/* <Nav.Link href={ROUTES.LANDING}>Home</Nav.Link> */}
-          <Nav.Link href={ROUTES.SIGN_IN}>Log In</Nav.Link>
+        <a href={ROUTES.HOME}><img src="./images/flickfoxlogo.jpg" alt="Main Logo" className="mainImage" /></a>
+          <Nav.Link href="#action/3.2">Movies</Nav.Link>
+          <Nav.Link href="#action/3.3">Television</Nav.Link>
+          <Nav.Link href="#action/3.3">Actors</Nav.Link>
           <NavDropdown title="Features" id="basic-nav-dropdown">
             <NavDropdown.Item href={ROUTES.ACCOUNT}>Drunk Fox Rantz</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Top Rated Movies</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Top Rated Tv Shows</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Popular Actors</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href={ROUTES.ACCOUNT}>My Account</NavDropdown.Item>
           </NavDropdown>
+          <Nav.Link className="signIn" href={ROUTES.SIGN_IN}>Log In</Nav.Link>
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -72,7 +75,7 @@ const NavigationNonAuth = () => (
         </Form>
       </Navbar.Collapse>
     </Navbar>
-    </nav> 
+  </nav>
 
 );
 
