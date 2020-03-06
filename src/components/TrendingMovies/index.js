@@ -38,6 +38,8 @@ function TrendingMovies(props) {
       props.componentTypeId(componentType)
       props.setActorsId(actorsId)
 
+      
+
     }
 
 

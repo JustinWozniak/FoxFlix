@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import MaterialIcon, { colorPalette } from 'material-icons-react'
 import Carousel from '@brainhubeu/react-carousel';
-
 let movieKey = 6666
 const posterPath = "https://image.tmdb.org/t/p/w500/"
 
+let actorsIdNumber = ""
 class Movie extends Component {
   state = {
     number: [0],
@@ -21,13 +21,11 @@ class Movie extends Component {
     budget: [],
 
     //actors in the movie
-    cast:[],
-    actorsObject:[],
-    actorsCount:[]
+    cast: [],
+    actorsObject: [],
+    actorsCount: []
   }
 
-
-  
   componentDidMount() {
     movieKey = this.props.value
     const API_URL = "https://api.themoviedb.org/3/movie/" + movieKey + "?api_key=" + process.env.REACT_APP_API_KEY + "&language=en-US&append_to_response=credits"
@@ -49,11 +47,12 @@ class Movie extends Component {
           budget: data.budget,
 
           //actors
-          credits:data.credits,
-          linkType:"person/"
-         
+          credits: data.credits,
+          linkType: "person/",
+          actorsIdNumbers: []
+
         })
-      
+
 
         let movieObject = Object.values(this.state.users);
         let actorsObject = Object.values(this.state.credits.cast);
@@ -62,26 +61,19 @@ class Movie extends Component {
         this.setState({ actorsObject: actorsObject })
         movieKey = this.props.value
       })
-
-
-   
-     
   }
 
 
   render() {
     movieKey = this.state.movieNumber
 
-   
+
     function changeTheLink(clickedActorinfo) {
-     
-      let actorsIdNumber = clickedActorinfo.id
-      console.log(actorsIdNumber)
-      
+      actorsIdNumber = clickedActorinfo.id
     }
 
     return (
-      
+
       <div>
         {this.state.number.map((user) => (
           <div>
@@ -103,23 +95,23 @@ class Movie extends Component {
               <h1 className="overView" key={this.state.runtime}>Runtime:{this.state.runtime}</h1>
               <h1 className="overView" key={this.state.budget}>Budget:${this.state.budget}</h1>
             </div>
-          
-          <h1 className="overView">Top Billed Cast:</h1>
-                <Carousel
-                className="TvShows"
-                    arrows
-                    slidesPerScroll={2}
-                    slidesPerPage={4}
-                    infinite
-                    arrows>
-                    {this.state.actorsObject.map((index) => {
-                        return <div><img className="actorMediumImages" onClick={() => changeTheLink(index)} key={index} src={posterPath + index.profile_path} alt="Actor Image" />
-                            <hr />
-                            <h3 className="whiteText">{index.character}</h3>
-                            <h3 className="whiteText">{index.name}</h3></div>
-                    })}
-                </Carousel>
-                </div>
+
+            <h1 className="overView">Top Billed Cast:</h1>
+            <Carousel
+              className="TvShows"
+              arrows
+              slidesPerScroll={2}
+              slidesPerPage={4}
+              infinite
+              arrows>
+              {this.state.actorsObject.map((index) => {
+                return <div><img className="actorMediumImages" onClick={() => changeTheLink(index)} key={index} src={posterPath + index.profile_path} alt="Actor Image" />
+                  <hr />
+                  <h3 className="whiteText">{index.character}</h3>
+                  <h3 className="whiteText">{index.name}</h3></div>
+              })}
+            </Carousel>
+          </div>
         ))}
       </div>
     )

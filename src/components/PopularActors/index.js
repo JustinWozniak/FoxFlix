@@ -28,7 +28,6 @@ function PopularActors() {
         }
 
         function loadThisActor(info) {
-            console.log(info)
         }
 
         // The rendered component

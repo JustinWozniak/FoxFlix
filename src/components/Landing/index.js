@@ -16,13 +16,13 @@ function Landing() {
   return(
   <div>
     <div className="introDiv">
-      Welcome to FoxFlix....the world's most popular and authoritative source for movie,
-       TV and celebrity content. Find ratings and reviews for the newest movie and TV shows....
-    </div>   
-
-    {componentType === "movie/" ? <Movie value={movieId}/> : 
-    tvComponentType === "tv/" ? <TvShow  value={tvShowId}/> : 
-    actorsId != "" ? <Actor /> :
+    {componentType === "movie/" ? "FoxFlix movies are updated often with new quotes and images! " : 
+    componentType === "tv/" ? "FoxLix is the prefect place to find up-todate information of your favorite tv shows!" :
+    "Welcome to FoxFlix....the world's most popular and authoritative source for movie,TV and celebrity content. Find ratings and reviews for the newest movie and TV shows."
+   } 
+</div>
+    {componentType === "movie/" ? <Movie value={movieId} componentTypeId={setComponentType} /> : 
+    tvComponentType === "tv/" ? <TvShow  value={tvShowId}/>:
     <div> 
       <TrendingMovies type={movieId} function={setMovieId} componentTypeId={setComponentType} actorsId={actorsId} setActorsId={setActorsId}/>
       <TrendingTvShows type={tvShowId} function={setTvShowId} componentTypeId={setTvComponentType}/>

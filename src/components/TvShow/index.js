@@ -39,8 +39,6 @@ class TvShow extends Component {
           status: data.status,
           first_air_date: data.first_air_date,
           number_of_episodes: data.number_of_episodes,
-          last_episode_to_air: data.last_episode_to_air.air_date,
-          next_episode_to_air: data.next_episode_to_air.air_date,
 
           //actors
           credits: data.credits.cast
@@ -62,7 +60,7 @@ class TvShow extends Component {
         {this.state.number.map((user) => (
           <div>
             <h2 className="headerOne" key={this.state.original_title}>{this.state.original_title}</h2>
-            <img className="mainMediaImage" key={this.state.original_title} src={posterPath + this.state.poster_path} alt={this.state.original_title} />
+            <img className="mainMediaImage" key={"NO"} src={posterPath + this.state.poster_path} alt={"Actor"} />
             <a href={this.state.homepage} h3 className="overView">View Homepage</a>
             <div className="icons">
               <MaterialIcon icon="favorite" size={75} color={colorPalette.pink._800} />
@@ -76,8 +74,6 @@ class TvShow extends Component {
               <h1 className="overView" key={this.state.status}>Status:{this.state.status}</h1>
               <h1 className="overView" key={this.state.first_air_date}>Release Date:{this.state.first_air_date}</h1>
               <h1 className="overView" key={this.state.number_of_episodes}>Number of Episodes: {this.state.number_of_episodes}</h1>
-              <h1 className="overView" key={this.state.last_episode_to_air}>Last Episode to Air: {this.state.last_episode_to_air}</h1>
-              <h1 className="overView" key={this.state.next_episode_to_air}>Next Episode to Air: {this.state.next_episode_to_air}</h1>
             </div>
 
             <h1 className="overView">Top Billed Cast:</h1>
