@@ -22,21 +22,17 @@ function Landing() {
     "Welcome to FoxFlix....the world's most popular and authoritative source for movie,TV and celebrity content. Find ratings and reviews for the newest movie and TV shows."
    } 
 </div>
-    {/* {componentType === "movie/" ? <Movie value={movieId} componentTypeId={setComponentType} /> : 
+   {componentType === "movie/" ? <Movie value={movieId} componentTypeId={setComponentType} /> : 
     tvComponentType === "tv/" ? <TvShow  value={tvShowId}/>:
     <div> 
       <TrendingMovies type={movieId} function={setMovieId} componentTypeId={setComponentType} actorsId={actorsId} setActorsId={setActorsId}/>
       <TrendingTvShows type={tvShowId} function={setTvShowId} componentTypeId={setTvComponentType}/>
-      <PopularActors />  */
-      <div>
-     <MoviesLanding />
-      </div>
-      
-      
-      }
+      <PopularActors /> 
   </div>
-  )
-}
+      
+   }</div>
+ )} 
+
 
 
 export default Landing;
