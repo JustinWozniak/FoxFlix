@@ -12,20 +12,28 @@ import Button from 'react-bootstrap/Button';
 import 'firebase/auth';
 import 'firebase/database';
 
-const Navigation = () => (
+function Navigation(props) {
 
-
+return(
   <div><AuthUserContext.Consumer>
 
     {authUser =>
 
-      authUser ? <NavigationAuth /> : <NavigationNonAuth />
+      authUser ? <NavigationAuth function={props.function} /> : <NavigationNonAuth />
 
     }
   </AuthUserContext.Consumer></div>
-);
+)
+}
 
-const NavigationAuth = () => (
+function NavigationAuth(props) {
+  function fixTheState(prevCount) {
+ return prevCount => "true"
+}
+
+
+
+ return(
   <nav justify className="navbar navbar-white bg-primary">
 
     <Navbar class="navbar navbar-dark bg-dark" >
@@ -36,9 +44,9 @@ const NavigationAuth = () => (
 
         <Nav className="mr-auto">
           <a href={ROUTES.HOME}><img src="./images/flickfoxlogo.jpg" alt="Main Logo" className="mainImage" /></a>
-          <Nav.Link href="#action/3.2">Movies</Nav.Link>
-          <Nav.Link href="#action/3.3">Television</Nav.Link>
-          <Nav.Link href="#action/3.3">Actors</Nav.Link>
+          <Nav.Link href="" onClick={() => props.function("Movies")}>Movies</Nav.Link>
+          <Nav.Link href="" onClick={() => props.function("Television")}>Television</Nav.Link>
+          <Nav.Link href="" onClick={() => props.function("Actors")}>Actors</Nav.Link>
           <NavDropdown title="Features" id="basic-nav-dropdown">
             <NavDropdown.Item href={ROUTES.ACCOUNT}>Drunk Fox Rantz</NavDropdown.Item>
             <NavDropdown.Divider />
@@ -56,8 +64,10 @@ const NavigationAuth = () => (
   </nav>
 
 );
+}
 
-const NavigationNonAuth = () => (
+function NavigationNonAuth()  {
+  return(
   <nav justify className="navbar navbar-white bg-primary">
 
     <Navbar class="navbar navbar-dark bg-dark" >
@@ -87,5 +97,6 @@ const NavigationNonAuth = () => (
   </nav>
 
 );
+}
 
 export default Navigation;
