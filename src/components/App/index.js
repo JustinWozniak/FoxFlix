@@ -11,6 +11,7 @@ import AdminPage from '../../SignupLogin/Admin';
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../../SignupLogin/Session';
 import MoviesLanding from '../MoviesLanding'
+import ActorsLanding from '../ActorsLanding'
 function App() {
   const [navState, setNavState] = useState("")
   console.log(navState)
@@ -30,7 +31,7 @@ function App() {
 
   else if (navState === "Actors") {
     return(
-      <div>YOU NEED TO MAKE ACTORS LANDING</div>
+      <ActorsLanding />
     )
   }
 
