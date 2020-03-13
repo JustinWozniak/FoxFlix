@@ -140,6 +140,11 @@ text-align: center;
   width: 2%;
 }
 
+.leftMarginedWhiteText  {
+  text-align: left;
+  color: black;
+}
+
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 
 /* Portrait and Landscape */
@@ -202,4 +207,11 @@ text-align: center;
   color: #ffffff;
   background-color: #000000;
   border-color: #2f08db
+}
+
+.norrisJoke{
+  background-color: #000000;
+  color: #2f08db;
+  margin-top: 200px;
+  text-align: center;
 }

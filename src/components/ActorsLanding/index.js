@@ -4,8 +4,10 @@ import MaterialIcon, { colorPalette } from 'material-icons-react'
 import Carousel from '@brainhubeu/react-carousel';
 import PopularActors from '../PopularActors'
 
-const posterPath = "https://image.tmdb.org/t/p/w500/"
 
+const posterPath = "https://image.tmdb.org/t/p/w500/"
+let currentDate = new Date();
+console.log(currentDate)
 let actorsIdNumber = ""
 class ActorsLanding extends Component {
     state = {
@@ -15,8 +17,9 @@ class ActorsLanding extends Component {
     render() {
         return (
             <div>
-            <h1>Here at FoxFlix, we're WILD about todays celeberities!</h1>
+            <h1 className="introDiv">Here at FoxFlix, we're WILD about todays celeberities!</h1>
             <PopularActors />
+            <h1 className="headerOne">Actors born today:</h1>
             </div>
         )
     }
