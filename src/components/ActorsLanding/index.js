@@ -6,8 +6,6 @@ import PopularActors from '../PopularActors'
 
 
 const posterPath = "https://image.tmdb.org/t/p/w500/"
-let currentDate = new Date();
-console.log(currentDate)
 let actorsIdNumber = ""
 class ActorsLanding extends Component {
     state = {

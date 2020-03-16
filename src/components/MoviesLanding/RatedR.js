@@ -22,7 +22,7 @@ function RatedR(props) {
   if (isLoading) return "Loading..."
   if (error) return `Something went wrong: ${error.message} Movies In Theaters`
   if (data) {
-    console.log(data)
+
     let movieImageUrls = []
     let movieNumbers = []
     let trendingMoviesCount = data.results.length

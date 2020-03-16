@@ -10,8 +10,6 @@ function Footer() {
       const response = await fetch(chuckNorrisJoke);
       const data = await response.json();
       returnedData = data.value.joke
-      console.log(returnedData)
-      console.log(data.value.joke)
       return returnedData;
     } catch (error) {
       throw error;

@@ -6,7 +6,7 @@ import Movie from '../Movie'
 import Actor from '../Actor'
 import TvShow from '../TvShow';
 import MoviesLanding from '../MoviesLanding';
-import Footer from '../Footer'
+
 
 
 function Landing() {

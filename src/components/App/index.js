@@ -14,6 +14,7 @@ import MoviesLanding from '../MoviesLanding'
 import ActorsLanding from '../ActorsLanding'
 import axios from 'axios';
 import Footer from '../Footer'
+import TelevisionLanding from '../TelevisionLanding';
 
 
 
@@ -27,23 +28,27 @@ function App() {
         <Navigation function={setNavState} />
         <hr />
         <MoviesLanding />
-        </div>
+      </div>
     )
   } else if (navState === "Television") {
-    return(
-      <div>YOU NEED TO MAKE TELEVSION LANDING</div>
+    return (
+      <div>
+        <Navigation function={setNavState} />
+        <hr />
+        <TelevisionLanding />
+      </div>
     )
   }
 
   else if (navState === "Actors") {
-    return(
+    return (
       <div>
-      <Navigation function={setNavState} />
-      <hr />
-      <ActorsLanding />
+        <Navigation function={setNavState} />
+        <hr />
+        <ActorsLanding />
       </div>
     )
-  } 
+  }
 
   return (
     <Router>
@@ -62,9 +67,9 @@ function App() {
         <Route path={ROUTES.ADMIN} component={AdminPage} />
         <Footer />
       </div>
-     
+
     </Router>
-  
+
   )
 }
 export default withAuthentication(App);

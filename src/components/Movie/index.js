@@ -33,7 +33,6 @@ class Movie extends Component {
     const url = `${API_URL}`;
     axios.get(url).then(response => response.data)
       .then((data) => {
-        console.log(data)
         this.setState({
           users: data,
           original_title: data.original_title,
